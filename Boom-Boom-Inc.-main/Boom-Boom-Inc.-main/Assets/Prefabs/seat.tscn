@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://v4flxm5184ke"]
+
+[ext_resource type="Script" path="res://Assets/scripts/seat.gd" id="1_g2a7e"]
+[ext_resource type="Texture2D" uid="uid://bs6chm3n1lsyw" path="res://Assets/Sprites/seatnormal.png" id="2_wgd1y"]
+[ext_resource type="Texture2D" uid="uid://frf0gssrl0j3" path="res://Assets/Sprites/seatsad.png" id="3_ptjpq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ku6t0"]
+size = Vector2(15, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cp16"]
+size = Vector2(11, 16)
+
+[node name="seat" type="StaticBody2D" groups=["explode"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_g2a7e")
+
+[node name="Seatnormal" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_wgd1y")
+
+[node name="Seatsad" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_ptjpq")
+
+[node name="Area2D" type="Area2D" parent="." groups=["explode"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 7.5)
+shape = SubResource("RectangleShape2D_ku6t0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 7)
+shape = SubResource("RectangleShape2D_1cp16")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

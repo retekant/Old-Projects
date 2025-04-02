@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://wmsc5rssvnw4"]
+
+[sub_resource type="Gradient" id="Gradient_m4w07"]
+offsets = PackedFloat32Array(0, 0.399497, 0.753769, 1)
+colors = PackedColorArray(0.87, 0, 0.0144998, 1, 1, 0.216667, 0, 1, 0.877333, 0.94, 0, 1, 1, 1, 1, 0.588235)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tijvy"]
+gradient = SubResource("Gradient_m4w07")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7ugc"]
+lifetime_randomness = 0.23
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 150.12
+initial_velocity_max = 411.19
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 5.0
+color_ramp = SubResource("GradientTexture1D_tijvy")
+
+[node name="theendonftheworld" type="GPUParticles2D"]
+position = Vector2(0, 5)
+emitting = false
+amount = 13270
+process_material = SubResource("ParticleProcessMaterial_g7ugc")
+one_shot = true
+explosiveness = 1.0

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddukttriqnxv"]
+
+[ext_resource type="Texture2D" uid="uid://cbtqglrcc0l2d" path="res://Assets/Sprites/blank.png" id="1_bmdf5"]
+[ext_resource type="Script" path="res://Assets/scripts/border.gd" id="1_c2jcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvr7c"]
+size = Vector2(17, 64)
+
+[node name="border" type="StaticBody2D"]
+position = Vector2(-584, 1)
+script = ExtResource("1_c2jcd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(584.5, -3)
+shape = SubResource("RectangleShape2D_xvr7c")
+
+[node name="Blank" type="Sprite2D" parent="."]
+modulate = Color(2, 0.14, 0.14, 1)
+position = Vector2(584, -3)
+scale = Vector2(1, 4)
+texture = ExtResource("1_bmdf5")

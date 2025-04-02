@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://did3mdt6snisx"]
+
+[ext_resource type="Script" path="res://Assets/scripts/destructibleitems.gd" id="1_x50m3"]
+[ext_resource type="Texture2D" uid="uid://btg27kbn8ad8c" path="res://Assets/Sprites/treenorm.png" id="2_t2h5b"]
+[ext_resource type="Texture2D" uid="uid://n6qome5d06ot" path="res://Assets/Sprites/treesad.png" id="3_6mvcx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ku6t0"]
+size = Vector2(11, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cp16"]
+size = Vector2(6, 24.5)
+
+[node name="tree" type="StaticBody2D" node_paths=PackedStringArray("snormal", "ssad") groups=["explode"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_x50m3")
+snormal = NodePath("Treenorm")
+ssad = NodePath("Treesad")
+
+[node name="Area2D" type="Area2D" parent="." groups=["explode"]]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3.5, -1.5)
+shape = SubResource("RectangleShape2D_ku6t0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -0.75)
+shape = SubResource("RectangleShape2D_1cp16")
+
+[node name="Treenorm" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-4, -2)
+texture = ExtResource("2_t2h5b")
+
+[node name="Treesad" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-4, -32)
+texture = ExtResource("3_6mvcx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]

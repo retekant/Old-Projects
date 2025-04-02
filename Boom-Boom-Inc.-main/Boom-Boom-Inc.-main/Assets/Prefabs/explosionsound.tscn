@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c15x6qhbvwr2"]
+
+[ext_resource type="AudioStream" uid="uid://cea21qs6sx7ak" path="res://Assets/sounds/explosion.mp3" id="1_vxkel"]
+[ext_resource type="Script" path="res://Assets/scripts/explosionsound.gd" id="2_8ri2w"]
+
+[node name="explosionsound" type="AudioStreamPlayer2D"]
+position = Vector2(1, 0)
+stream = ExtResource("1_vxkel")
+volume_db = -17.427
+pitch_scale = 1.44
+autoplay = true
+script = ExtResource("2_8ri2w")

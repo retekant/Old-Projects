@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvsi3lr1ln5h4"]
+
+[ext_resource type="Script" path="res://Assets/scripts/window.gd" id="1_1kin6"]
+[ext_resource type="Texture2D" uid="uid://cg40orrclod2m" path="res://Assets/Sprites/winnormal.png" id="1_26dlt"]
+[ext_resource type="Texture2D" uid="uid://bsser81cl5kqd" path="res://Assets/Sprites/winsad.png" id="2_7u6k3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72q7c"]
+size = Vector2(22, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjo3s"]
+size = Vector2(32, 16)
+
+[node name="window" type="StaticBody2D" groups=["explode"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_1kin6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, -1.5)
+shape = SubResource("RectangleShape2D_72q7c")
+
+[node name="Area2D" type="Area2D" parent="." groups=["explode"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["explode"]]
+position = Vector2(2, -1)
+shape = SubResource("RectangleShape2D_qjo3s")
+
+[node name="Winnormal" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -1)
+texture = ExtResource("1_26dlt")
+
+[node name="Winsad" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(2, -1)
+texture = ExtResource("2_7u6k3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmdvnuci2r8q"]
+
+[ext_resource type="Script" path="res://prefabs/uimanagement.gd" id="1_6bqoi"]
+[ext_resource type="FontFile" uid="uid://b0txxuq8jq84g" path="res://materials/joystix monospace.otf" id="2_xyr2g"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6bqoi")
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 2
+offset_left = 451.0
+offset_top = 239.64
+offset_right = 849.0
+offset_bottom = 307.64
+theme_override_fonts/font = ExtResource("2_xyr2g")
+theme_override_font_sizes/font_size = 50
+text = "Continue?"
+
+[node name="QUIT D_" type="Button" parent="."]
+layout_mode = 2
+offset_left = 451.0
+offset_top = 362.0
+offset_right = 849.0
+offset_bottom = 430.0
+theme_override_fonts/font = ExtResource("2_xyr2g")
+theme_override_font_sizes/font_size = 50
+text = "Quit?"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="QUIT D_" to="." method="_on_quit_d__pressed"]

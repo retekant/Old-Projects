@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://0w4fbvqv2wpb"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_i4mjl"]
+[ext_resource type="PackedScene" uid="uid://rs02ibnyki76" path="res://models/airplane.blend" id="2_xdste"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_okrnn"]
+size = Vector3(1.28586, 0.180817, 1.88991)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k34k6"]
+size = Vector3(1.00876, 1.15308, 2.28996)
+
+[node name="Player" type="Node3D"]
+
+[node name="body" type="CharacterBody3D" parent="."]
+script = ExtResource("1_i4mjl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0900122, -0.122574, -0.0153377)
+shape = SubResource("BoxShape3D_okrnn")
+
+[node name="airplane" parent="body" instance=ExtResource("2_xdste")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206757, -0.0677489, 0.480782)
+shape = SubResource("BoxShape3D_k34k6")
+
+[connection signal="area_entered" from="Area3D" to="body" method="_on_area_3d_area_entered"]

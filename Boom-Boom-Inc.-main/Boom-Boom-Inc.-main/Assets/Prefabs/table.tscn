@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwo2ykrxonjuh"]
+
+[ext_resource type="Script" path="res://Assets/scripts/table.gd" id="1_vwtqc"]
+[ext_resource type="Texture2D" uid="uid://duh2olh8j3547" path="res://Assets/Sprites/tablenormal.png" id="2_0n76f"]
+[ext_resource type="Texture2D" uid="uid://cou8t0thdyvgw" path="res://Assets/Sprites/tablesad.png" id="3_xm385"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3u8bf"]
+size = Vector2(45, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xricf"]
+size = Vector2(52, 35)
+
+[node name="table" type="StaticBody2D" groups=["explode"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_vwtqc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_3u8bf")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_xricf")
+
+[node name="Tablenormal" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_0n76f")
+
+[node name="Tablesad" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+texture = ExtResource("3_xm385")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

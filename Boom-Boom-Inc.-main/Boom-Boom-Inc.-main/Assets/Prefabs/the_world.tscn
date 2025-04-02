@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxuswe2x1jsgy"]
+
+[ext_resource type="Script" path="res://Assets/scripts/the world.gd" id="1_3cq13"]
+[ext_resource type="PackedScene" uid="uid://wmsc5rssvnw4" path="res://Assets/Prefabs/theendonftheworld.tscn" id="2_i1ulb"]
+[ext_resource type="Texture2D" uid="uid://b7uatotsda8fk" path="res://Assets/Sprites/zawardunormal.png" id="2_kunhu"]
+[ext_resource type="Texture2D" uid="uid://52gdjjoibr3u" path="res://Assets/Sprites/zawardusad.png" id="3_tns3f"]
+[ext_resource type="Texture2D" uid="uid://brq7jmkawx7pn" path="res://Assets/Sprites/htemoon.png" id="4_iyoe4"]
+
+[node name="the world" type="Node2D" node_paths=PackedStringArray("snormal", "ssad")]
+script = ExtResource("1_3cq13")
+snormal = NodePath("Zawardunormal")
+ssad = NodePath("Zawardusad")
+explosion = ExtResource("2_i1ulb")
+
+[node name="Zawardusad" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, -1)
+texture = ExtResource("3_tns3f")
+
+[node name="Zawardunormal" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+texture = ExtResource("2_kunhu")
+
+[node name="Htemoon" type="Sprite2D" parent="Zawardunormal"]
+texture_filter = 1
+position = Vector2(-108, -79)
+texture = ExtResource("4_iyoe4")

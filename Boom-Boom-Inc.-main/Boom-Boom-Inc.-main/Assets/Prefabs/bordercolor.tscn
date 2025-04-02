@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwtfotrg78jig"]
+
+[ext_resource type="Texture2D" uid="uid://drbr3og3i3utv" path="res://Assets/Sprites/borders.png" id="1_c3jyk"]
+
+[node name="Border" type="Sprite2D"]
+position = Vector2(-6, -5)
+texture = ExtResource("1_c3jyk")

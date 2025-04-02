@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmqdwy6mtrdeg"]
+
+[ext_resource type="Script" path="res://Assets/scripts/bomb.gd" id="1_qf84t"]
+[ext_resource type="PackedScene" uid="uid://b8qj0n03ys4ky" path="res://Assets/Prefabs/explosion.tscn" id="2_dxmdg"]
+[ext_resource type="Texture2D" uid="uid://brrj82k2ov2mq" path="res://Assets/Sprites/bomb.png" id="2_pys3r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a5t6"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh00c"]
+radius = 9.05539
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["explosive"]]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.1
+script = ExtResource("1_qf84t")
+explosion = ExtResource("2_dxmdg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_5a5t6")
+
+[node name="Bomb" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -1)
+texture = ExtResource("2_pys3r")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+light_mask = 2
+visibility_layer = 2
+shape = SubResource("CircleShape2D_vh00c")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
